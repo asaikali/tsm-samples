@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: message-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: message-service
@@ -14,7 +14,7 @@ spec:
     spec:
       serviceAccountName: "spring-cloud"
       containers:
-      - image: asaikali/message-service:latest
+      - image: asaikali/message-service
         imagePullPolicy: Always
         name: message-service
         ports:
@@ -24,7 +24,7 @@ spec:
             value: "-XshowSettings:vm -XX:MaxRAMPercentage=75.0"
         resources:
           requests:
-            cpu: 1000m
+            cpu: 500m
             memory: 1G
           limits:
             cpu: 1000m
@@ -34,13 +34,30 @@ spec:
           periodSeconds: 5
           httpGet:
             port: 8080
-            path: /alive
+            path: /actuator/health/liveness
         readinessProbe:
           initialDelaySeconds: 5
           periodSeconds: 5
           httpGet:
             port: 8080
-            path: /actuator/health
+            path: /actuator/health/readiness
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: message-service
+  name: message-service
+  namespace: default
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: message-service
+  type: NodePort
 
 
 

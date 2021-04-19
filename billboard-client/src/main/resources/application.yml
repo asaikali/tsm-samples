@@ -1,7 +1,9 @@
-spring:
-  cloud:
-    kubernetes:
-      enabled: false
+#spring:
+#  cloud:
+#    kubernetes:
+#      enabled: false
+
+message.service.url: "http://message-service"
 
 eureka:
   client:
