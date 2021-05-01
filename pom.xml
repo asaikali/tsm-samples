@@ -10,11 +10,11 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.example</groupId>
-  <artifactId>spring-cloud-k8s</artifactId>
+  <artifactId>tsm-samples</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>spring-cloud-k8s</name>
   <packaging>pom</packaging>
-  <description>Demo Project showing Spring cloud Integration with Kubernetes</description>
+  <description>Demo Project showing Spring Cloud on Tanzu Service Mesh</description>
 
   <properties>
     <java.version>11</java.version>
