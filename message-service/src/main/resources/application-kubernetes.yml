@@ -5,9 +5,9 @@ eureka:
   client:
     enabled: false
 
-spring:
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-        strategy: restart_context
+#spring:
+#  cloud:
+#    kubernetes:
+#      reload:
+#        enabled: false
+#        strategy: restart_context

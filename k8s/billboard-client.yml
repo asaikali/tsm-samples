@@ -18,10 +18,19 @@ spec:
         name: billboard-client
         ports:
           - containerPort: 8080
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 1G
-          limits:
-            cpu: 1000m
-            memory: 1G
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: billlboard-client
+  name: billboard-client
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: billboard-client
+  type: NodePort
