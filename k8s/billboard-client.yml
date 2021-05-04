@@ -12,6 +12,7 @@ spec:
       labels:
         app: billboard-client
     spec:
+      serviceAccountName: "spring-cloud"
       containers:
       - image: asaikali/billboard-client:latest
         imagePullPolicy: Always
@@ -33,4 +34,4 @@ spec:
       targetPort: 8080
   selector:
     app: billboard-client
-  type: NodePort
+  type: ClusterIP
